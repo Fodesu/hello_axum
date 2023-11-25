@@ -21,7 +21,7 @@ async fn main() -> Result<()> {
     let routes_all = Router::new()
         .merge(routes_hello())
         .merge(web::routes_login::routes())
-        .nest("/api", routes_apis)
+        .nest("/api", routes_apis) // nest 指分流， routes_apis中 是以 /api 开头的路由
         .layer(middleware::map_response(main_response_mapper))
         .layer(CookieManagerLayer::new())
         .fallback_service(routes_static()); // 后备匹配，如果 merge 的匹配不上再来匹配后备
