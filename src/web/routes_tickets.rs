@@ -10,7 +10,7 @@ pub fn routes(mc : ModelController) -> Router {
     Router::new()
         .route("/tickets", post(create_ticket).get(list_tickets))
         .route("/tickets/:id", delete(delete_ticket))
-        .with_state(mc)
+        .with_state(mc) 
 }
 
 async fn create_ticket(

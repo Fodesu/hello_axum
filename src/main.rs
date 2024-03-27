@@ -51,6 +51,13 @@ fn routes_hello() -> Router {
     .route("/hello", get(handler_hello))
     .route("/hello2/:name", get(handler_hello2))
 }
+ 
+fn routes_page() -> Router {
+    Router::new()
+    .route("/login", get_service(ServeDir::new("./")))
+}
+
+
 
 #[derive(Debug, Deserialize)]
 struct HellrParmas {
